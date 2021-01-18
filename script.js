@@ -25,7 +25,7 @@ function setDivs(){
     for (let i = 1; i <= 9; i++) {
         let div = document.createElement('div');
         div.setAttribute('class', 'subdiv');
-        div.setAttribute('id', i);
+        div.setAttribute('id', `d${i}`);
         div.onclick = (e) => xo(e);
         document.getElementById('container').appendChild(div);    
     }
