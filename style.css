@@ -1,0 +1,26 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 30rem 1fr;
+    height: 100vh;
+}
+div {
+    border: red dotted 1px;
+}
+#centerCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#container {
+    border: blue solid 1px;
+    width: 100%;
+    height: 30rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+.subdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
