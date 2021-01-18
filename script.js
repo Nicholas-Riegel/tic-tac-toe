@@ -1,12 +1,12 @@
-// global variable for switching off onlick after first click
+// Global variable to alternate between X and O;
 
-let x = 0;
+let y = 1;
 
 // Start button
 
 document.getElementById('start').onclick = () => {
     clearDivs();
-    x=0;
+    y=1;
     setDivs();
 }
 
@@ -30,10 +30,6 @@ function setDivs(){
         document.getElementById('container').appendChild(div);    
     }
 }
-
-// Global variable to alternate between X and O;
-
-let y = 1;
 
 // function which writes X or O;
 
