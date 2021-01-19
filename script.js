@@ -1,12 +1,12 @@
-// Global variable to alternate between X and O;
+// Global variable to alternate between Xs and Os;
 
-let y = 1;
+let x = 1;
 
 // Start button
 
 document.getElementById('start').onclick = () => {
-    clearDivs();
-    y=1;
+    clearDivs(); 
+    x=1; 
     setDivs();
 }
 
@@ -14,8 +14,8 @@ document.getElementById('start').onclick = () => {
 
 function clearDivs(){
     let subdivs = document.getElementsByClassName('subdiv');
-    while (subdivs[0]) {
-        subdivs[0].parentNode.removeChild(subdivs[0]);
+    while (subdivs[0]) { 
+        subdivs[0].parentNode.removeChild(subdivs[0]); 
     }
 }
 
@@ -35,19 +35,7 @@ function setDivs(){
 
 function xo(e){
     if (e.target.textContent === ''){
-        if (y === 1){
-            e.target.textContent = 'X';
-            y = 2;
-            return;
-        }
-        if (y === 2) {
-            e.target.textContent = 'O';
-            y = 1;
-            return;
-        }
-    }
-    else {
-        return ;
-    }
+        if (x === 1) { e.target.textContent = 'X'; x = 2; }
+        else if (x === 2) { e.target.textContent = 'O'; x = 1; }
+    } else { return ; }
 }
-
