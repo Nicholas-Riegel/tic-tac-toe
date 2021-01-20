@@ -1,3 +1,5 @@
+// game in its simplest verion
+
 // Global variable to alternate between Xs and Os;
 
 let x = 1;

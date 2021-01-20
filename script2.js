@@ -1,9 +1,11 @@
-// Global variable to alternate between Xs and Os in xo function ;
+//game with scorekeeper
+
+// Global variable to alternate between Xs and Os [see xo() function below]. and stopp allowing clicks when game is done [see xo() and announceWinner() functions below]
 
 let x = 1;
 let allowClicks = 'yes'
 
-// game object. x = 1, o = 2
+// game object. d1 through d9 identify the squares. when an x or and o are chosen, the zeros will be replaeced by 1 or 2. x = 1, o = 2
 
 const game = {
     d1: 0,
@@ -17,7 +19,7 @@ const game = {
     d9: 0,
 }
 
-// Start button
+// New Game button
 
 document.getElementById('start').onclick = () => {
     clearDivs(); 
@@ -25,7 +27,7 @@ document.getElementById('start').onclick = () => {
     setDivs();
 }
 
-// function clear divs
+// function clear divs and resets values
 
 function clearDivs(){
     let subdivs = document.getElementsByClassName('subdiv');
@@ -45,7 +47,7 @@ function clearDivs(){
     document.getElementById('winner').textContent='';
 }
 
-// function set divs
+// function set divs/boxes of the game UI with their properties
 
 function setDivs(){
     for (let i = 1; i <= 9; i++) {
@@ -57,7 +59,7 @@ function setDivs(){
     }
 }
 
-// function which writes X or O;
+// function writes X or O to the UI and scorekeeper 'game';
 
 function xo(e){
     if ((e.target.textContent === '') && (allowClicks==='yes')){
@@ -83,29 +85,32 @@ function xo(e){
 
 function announceWinner(){
     if (
-        (game.d1===1&&game.d2===1&&game.d3===1) ||
-        (game.d4===1&&game.d5===1&&game.d6===1) ||
-        (game.d7===1&&game.d8===1&&game.d9===1) ||
-        (game.d1===1&&game.d4===1&&game.d7===1) ||
-        (game.d2===1&&game.d5===1&&game.d8===1) ||
-        (game.d3===1&&game.d6===1&&game.d9===1) ||
-        (game.d1===1&&game.d5===1&&game.d9===1) ||
-        (game.d3===1&&game.d5===1&&game.d7===1) 
+        (game.d1===1 && game.d2===1 && game.d3===1) ||
+        (game.d4===1 && game.d5===1 && game.d6===1) ||
+        (game.d7===1 && game.d8===1 && game.d9===1) ||
+        (game.d1===1 && game.d4===1 && game.d7===1) ||
+        (game.d2===1 && game.d5===1 && game.d8===1) ||
+        (game.d3===1 && game.d6===1 && game.d9===1) ||
+        (game.d1===1 && game.d5===1 && game.d9===1) ||
+        (game.d3===1 && game.d5===1 && game.d7===1) 
     ){
         document.getElementById('winner').textContent = 'X wins!';
         allowClicks='no'
     }
     else if (
-        (game.d1===2&&game.d2===2&&game.d3===2) ||
-        (game.d4===2&&game.d5===2&&game.d6===2) ||
-        (game.d7===2&&game.d8===2&&game.d9===2) ||
-        (game.d1===2&&game.d4===2&&game.d7===2) ||
-        (game.d2===2&&game.d5===2&&game.d8===2) ||
-        (game.d3===2&&game.d6===2&&game.d9===2) ||
-        (game.d1===2&&game.d5===2&&game.d9===2) ||
-        (game.d3===2&&game.d5===2&&game.d7===2)
+        (game.d1===2 && game.d2===2 && game.d3===2) ||
+        (game.d4===2 && game.d5===2 && game.d6===2) ||
+        (game.d7===2 && game.d8===2 && game.d9===2) ||
+        (game.d1===2 && game.d4===2 && game.d7===2) ||
+        (game.d2===2 && game.d5===2 && game.d8===2) ||
+        (game.d3===2 && game.d6===2 && game.d9===2) ||
+        (game.d1===2 && game.d5===2 && game.d9===2) ||
+        (game.d3===2 && game.d5===2 && game.d7===2)
     ){
         document.getElementById('winner').textContent = 'O wins!';
         allowClicks='no'
+    }
+    else {
+        return ;
     }
 }
