@@ -2,12 +2,12 @@
 
 //game in module form
 
-const gameModule = (()=> {
+const gameModule = (() => {
     
     // variables for player information
 
-    let player1x
-    let player2o
+    let player1x;
+    let player2o;
 
     // variable to ask for user information only at first game.
 
@@ -19,18 +19,18 @@ const gameModule = (()=> {
 
     // variable to stop allowing clicks when game is done [see xo() and announceWinner() functions below]
 
-    let allowClicks = 'yes'
+    let allowClicks = 'yes';
 
     const newGame = () => {
         clearDivs(); 
         x=1; 
         setDivs();
         if (y === 0){
-            player1x = prompt('Player 1 (X), please enter your game name')
-            player2o = prompt('Player 2 (O), please enter your game name')
+            player1x = prompt('Player 1 (X), please enter your game name.');
+            player2o = prompt('Player 2 (O), please enter your game name.');
         }
         y = 1;
-    }
+    };
 
     // game object. d1 through d9 identify the squares. when an x or and o are chosen, the zeros will be replaeced by 1 or 2. x = 1, o = 2
 
@@ -44,7 +44,7 @@ const gameModule = (()=> {
         d7: 0,
         d8: 0,
         d9: 0,
-    }
+    };
 
     // function clear divs and resets values
 
@@ -64,7 +64,7 @@ const gameModule = (()=> {
         game.d9 = 0;
         allowClicks='yes';
         document.getElementById('winner').textContent='';
-    }
+    };
 
     // function set divs/boxes of the game UI with their properties
 
@@ -76,7 +76,7 @@ const gameModule = (()=> {
             div.onclick = (e) => xo(e);
             document.getElementById('container').appendChild(div);    
         }
-    }
+    };
 
     // function writes X or O to the UI and scorekeeper 'game';
 
@@ -98,7 +98,7 @@ const gameModule = (()=> {
         else { 
             return ; 
         }
-    }
+    };
 
     // function announce winner
 
@@ -139,7 +139,7 @@ const gameModule = (()=> {
         setDivs,
         xo,
         announceWinner      
-    }
+    };
 })();
 
 // New Game button
