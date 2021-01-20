@@ -1,22 +1,36 @@
 // placing functions in a module
 
-// New Game button
-
-document.getElementById('start').onclick = () => {
-    gameModule.clearDivs(); 
-    gameModule.x=1; 
-    gameModule.setDivs();
-}
-
 //game in module form
 
 const gameModule = (()=> {
     
-    // Global variable to alternate between Xs and Os [see xo() function below]. and stopp allowing clicks when game is done [see xo() and announceWinner() functions below]
+    // variables for player information
+
+    let player1x
+    let player2o
+
+    // variable to ask for user information only at first game.
+
+    let y = 0;
+    
+    // variable to alternate between Xs and Os [see xo() function below]. 
 
     let x = 1;
+
+    // variable to stop allowing clicks when game is done [see xo() and announceWinner() functions below]
+
     let allowClicks = 'yes'
 
+    const newGame = () => {
+        clearDivs(); 
+        x=1; 
+        setDivs();
+        if (y === 0){
+            player1x = prompt('Player 1 (X), please enter your game name')
+            player2o = prompt('Player 2 (O), please enter your game name')
+        }
+        y = 1;
+    }
 
     // game object. d1 through d9 identify the squares. when an x or and o are chosen, the zeros will be replaeced by 1 or 2. x = 1, o = 2
 
@@ -99,7 +113,7 @@ const gameModule = (()=> {
             (game.d1===1 && game.d5===1 && game.d9===1) ||
             (game.d3===1 && game.d5===1 && game.d7===1) 
         ){
-            document.getElementById('winner').textContent = 'X wins!';
+            document.getElementById('winner').textContent = player1x + " wins!";
             allowClicks='no'
         }
         else if (
@@ -112,7 +126,7 @@ const gameModule = (()=> {
             (game.d1===2 && game.d5===2 && game.d9===2) ||
             (game.d3===2 && game.d5===2 && game.d7===2)
         ){
-            document.getElementById('winner').textContent = 'O wins!';
+            document.getElementById('winner').textContent = player2o + " wins!";
             allowClicks='no'
         }
         else {
@@ -120,9 +134,14 @@ const gameModule = (()=> {
         }
     }
     return {
+        newGame,
         clearDivs,
         setDivs,
         xo,
         announceWinner      
     }
 })();
+
+// New Game button
+
+document.getElementById('start').onclick = gameModule.newGame;
